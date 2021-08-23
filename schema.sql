@@ -63,5 +63,16 @@ FROM employees e
 LEFT JOIN salaries s
 ON e.emp_no = s.emp_no
 
+SELECT e.last_name, e.first_name, e.hire_date
+FROM employees e
+WHERE EXTRACT(YEAR FROM e.hire_date) = 1986
+
+SELECT dm.dept_no, d.dept_name, dm.emp_no, e.last_name, e.first_name
+FROM dept_manager dm
+LEFT JOIN departments d
+ON dm.dept_no = d.dept_no
+LEFT JOIN employees e
+ON e.emp_no = dm.emp_no
+
 
 
