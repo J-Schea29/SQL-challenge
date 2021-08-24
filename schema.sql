@@ -74,5 +74,28 @@ ON dm.dept_no = d.dept_no
 LEFT JOIN employees e
 ON e.emp_no = dm.emp_no
 
+SELECT de.emp_no, e.last_name, e.first_name, d.dept_name
+FROM dept_emp de
+LEFT JOIN departments d
+ON de.dept_no = d.dept_no
+LEFT JOIN employees e
+ON e.emp_no = de.emp_no
+
+SELECT e.last_name, e.first_name, e.sex
+FROM employees e
+WHERE e.first_name = 'Hercules'
+AND e.last_name LIKE 'B%'
+
+SELECT de.emp_no, e.last_name, e.first_name, de.dept_no
+FROM dept_emp de
+LEFT JOIN employees e
+ON e.emp_no = de.emp_no
+WHERE de.dept_no IN
+(
+  SELECT d.dept_no
+  FROM departments d
+  WHERE d.dept_name = 'Sales'
+  OR d.dept_name = 'Development'
+);
 
 
